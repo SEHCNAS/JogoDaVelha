@@ -8,14 +8,24 @@ def PrintJogo(vetor):
 
 if __name__ == '__main__':
 
-    bool = True
+    ContinuaJogo = True
+    IdentificadorJogadorDoisValido = False
     vetor = [' '] * 9
 
-    TiposJogadas = ['X', '0']
+    TiposJogadas = ['', '']
     Jogada = 0
 
-    while bool:
-        # PrintJogo(vetor)
+    TiposJogadas[0] = input("Digite o identificador do primeiro jogador: ")
+
+    while not IdentificadorJogadorDoisValido:
+        TiposJogadas[1] = input("Digite o identificador do primeiro jogador: ")
+        if TiposJogadas[1] != TiposJogadas[0]:
+            IdentificadorJogadorDoisValido = True
+
+    PrintJogo(vetor)
+
+    while ContinuaJogo:
+
         posicao = int(input("Digite a casa em que deseja jogar: "))
 
         if vetor[posicao] == ' ':
@@ -34,39 +44,39 @@ if __name__ == '__main__':
                 # vencer na linha
                 if vetor[0] == TiposJogadas[i] and vetor[1] == TiposJogadas[i] and vetor[2] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 if vetor[3] == TiposJogadas[i] and vetor[4] == TiposJogadas[i] and vetor[5] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 if vetor[6] == TiposJogadas[i] and vetor[7] == TiposJogadas[i] and vetor[8] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 # Vencer na coluna
                 if vetor[0] == TiposJogadas[i] and vetor[3] == TiposJogadas[i] and vetor[6] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 if vetor[1] == TiposJogadas[i] and vetor[4] == TiposJogadas[i] and vetor[7] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 if vetor[2] == TiposJogadas[i] and vetor[5] == TiposJogadas[i] and vetor[8] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 # Vence em X
                 if vetor[2] == TiposJogadas[i] and vetor[4] == TiposJogadas[i] and vetor[6] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
                 if vetor[0] == TiposJogadas[i] and vetor[4] == TiposJogadas[i] and vetor[8] == TiposJogadas[i]:
                     print('O {Jogador}º jogador venceu'.format(Jogador=(i + 1)))
-                    bool = False
+                    ContinuaJogo = False
 
         PrintJogo(vetor)
 
         if Jogada == 9:
-            bool = False
+            ContinuaJogo = False
